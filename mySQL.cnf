@@ -1,0 +1,5 @@
+[client]
+database = 'default'
+user = 'kukshabird'
+password = 'adminpassword2'
+default-character-set = utf8

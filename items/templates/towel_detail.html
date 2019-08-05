@@ -1,0 +1,28 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block main_block %}
+<!--TODO-->
+<!--Таблицу характеристик-->
+<div class="items-detail">
+  <h2 style='text-align:center'>{{towel.name}}</h2>
+  <div class="items-detail-img">
+    <img class="detail-image border rounded" src="{% static towel.get_img_pass %}" alt="Фото отсутствует.">
+  </div>
+  <div class="items-detail-descr">
+    <h2>Характеристики</h2>
+    <p><span>Артикул:</span> {{ towel.article }}</p>
+    <p><span>Цена:</span> {{ towel.price }} грн.</p>
+    {% if towel.available %}
+    <strong><p style="color:green">Есть в наличии</p></strong>
+    {% else %}
+    <strong><p style="color:red">Наличие уточнять у оператора.</p></strong>
+    {% endif %}
+    <p><span>Размер:</span> {{ towel.size }}</p>
+    <p><span>Материал:</span> {{ towel.fabric|capfirst }}</p>
+    {% if product.description %}
+    <p><span>Описание:</span> {{ towel.description }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

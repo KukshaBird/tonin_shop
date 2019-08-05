@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="ru" dir="ltr">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139919236-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-139919236-1');
+    </script>
+
+    <meta charset="utf-8">
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- MY CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}">
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+    <!--<link href="https://fonts.googleapis.com/css?family=Bad+Script&display=swap" rel="stylesheet">-->
+    <title>Soft-Antoshka</title>
+  </head>
+  <body>
+    <div class="header-zero">
+      <div class="nas-container">
+        <div class="header-zero_links">
+          <div id="viber">
+            <h4><img src="{% static 'icons/viber.png' %}" alt="Viber: "> (063) 279-57-64</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="title-block">
+      <a id="title" href="{% url 'index' %}"><h1>Soft Antoshka</h1></a>
+    </div>
+    <nav class="main-nav">
+      <ul class="main-nav-ul">
+        <li><a href="{% url 'index' %}">Главная</a></li>
+        <li><a href="{% url 'items:products_list' %}">Постели</a></li>
+        <li><a href="{% url 'items:towels_list' %}">Полотенца</a></li>
+        <li><a href="{% url 'info:contacts' %}">Контакты</a></li>
+        <li><a href="{% url 'info:deliverance' %}">Доставка</a></li>
+      </ul>
+    </nav>
+    <div class="main-container">
+      <div class="container">
+        {% block main_block %}
+        {% endblock %}
+      </div>
+    </div>
+    <footer><h3 style="padding:10px"><div>Icons made by <a href="https://www.flaticon.com/authors/swifticons" title="Swifticons">Swifticons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div></h3></footer>
+    <script src="{% static 'js/viber.js' %}"></script>
+  </body>
+</html>

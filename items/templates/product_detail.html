@@ -1,0 +1,47 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block main_block %}
+<!--TODO-->
+<!--Таблицу характеристик-->
+<div class="items-detail">
+  <h2 style='text-align:center'>{{product.name}}</h2>
+  <div class="items-detail-img">
+    <img class="detail-image border rounded" src="{% static product.get_img_pass %}" alt="Фото отсутствует.">
+  </div>
+  <div class="items-detail-descr">
+    <h2>Характеристики</h2>
+    <p><span>Артикул:</span> {{ product.article }}</p>
+    <p><span>Цена:</span> {{ product.price }} грн.</p>
+    {% if product.available %}
+    <strong><p style="color:green">Есть в наличии</p></strong>
+    {% else %}
+    <strong><p style="color:red">Наличие уточнять у оператора.</p></strong>
+    {% endif %}
+    <p><span>Размер:</span> {{ product.type }}</p>
+    <p><span>Материал:</span> {{ product.fabric|capfirst }}</p>
+    <p><span>Пододеяльник:</span> {{ product.duvet_cover.size }} см. {{ product.duvet_cover.amount }} шт.</p>
+    <p><span>Простынь:</span> {{ product.sheet.size }} см. {{ product.sheet.amount }} шт.</p>
+    <p><span>Наволочки:</span> {{ product.pillowcase.size }} см. {{ product.pillowcase.amount }} шт.</p>
+    {% if product.description %}
+    <p><span>Описание:</span> {{ product.description }}</p>
+    {% endif %}
+  </div>
+    {% if product_types|length > 1 %}
+    <div class='types_list'>
+        <table>
+            <th><h3>Размеры: </h3></th>
+            <th>
+                <div id='dropdawn'>
+                    <span id='dropdwn'>{{ product.type }}</span>
+                    <div class='dropdown-content'>
+                    {% for type in product_types  %}
+                        <a href="{% url 'items:product_details' pk=type.pk %}">{{type.type}}</a>
+                    {% endfor %}
+                    </div>
+                </div>
+            </th>
+        </table>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
