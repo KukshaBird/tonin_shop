@@ -2,6 +2,8 @@ from django.views.generic import ListView,DetailView
 #from django.http import HttpResponse
 from items.models import Product,Towel
 #from tonin_shop.views import Index
+from .filters import ProductFilter
+
 
 class ProductListView(ListView):
     model = Product
@@ -15,6 +17,7 @@ class ProductListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['filter'] = ProductFilter(self.request.GET, queryset=self.get_queryset())
         #context['product_list'] = Product.objects.all().order_by('-create_date')
         query = self.request.GET.get("q")
         if query:
