@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'items',
     'info',
+    'django_filters',
+    'bootstrapform'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +137,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),BASE_DIR]
+
+#Change VERBOSE_LOOKUPS in FILTERS
+def FILTERS_VERBOSE_LOOKUPS():
+    from django_filters.conf import DEFAULTS
+    verbose_lookups = DEFAULTS['VERBOSE_LOOKUPS'].copy()
+    verbose_lookups.update({
+            'icontains': 'содержит',
+            'lt': 'меньше чем',
+            'gt': 'больше чем'
+        })
+    return verbose_lookups

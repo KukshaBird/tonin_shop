@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django_filters.views import FilterView
+from .models import Product
 # from django.conf import settings
 # from django.conf.urls.static import static
 
@@ -9,5 +11,5 @@ urlpatterns = [
     path('',views.ProductListView.as_view(),name='products_list'),
     path('towels',views.TowelListView.as_view(),name='towels_list'),
     path('details/<int:pk>',views.ProductDetailView.as_view(),name='product_details'),
-     path('details/towel/<int:pk>',views.TowelDetailView.as_view(),name='towel_details')
+    path('details/towel/<int:pk>',views.TowelDetailView.as_view(),name='towel_details'),
 ]
