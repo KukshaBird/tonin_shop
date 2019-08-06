@@ -24,9 +24,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = '$ho)*w!x-rg-yw)xh-p@zk*w(d1$o1rjtqah0!o-#v8_+#&fu3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['kukshabird.pythonanywhere.com']
+# ALLOWED_HOSTS = ['kukshabird.pythonanywhere.com']
 
 
 # Application definition
@@ -76,17 +76,23 @@ WSGI_APPLICATION = 'tonin_shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         #'OPTIONS': {
+#          #       'read_default_file': os.path.join(BASE_DIR, 'tonin_shop/mySQL.cnf')
+#          #   },
+#         'NAME': 'kukshabird$shop_items',
+#         'USER': "kukshabird",
+#         'PASSWORD': 'adminpassword2',
+#         'HOST': 'https://www.pythonanywhere.com/user/kukshabird.mysql.pythonanywhere-services.com',
+#         #'PORT': '5432'
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        #'OPTIONS': {
-         #       'read_default_file': os.path.join(BASE_DIR, 'tonin_shop/mySQL.cnf')
-         #   },
-        'NAME': 'kukshabird$shop_items',
-        'USER': "kukshabird",
-        'PASSWORD': 'adminpassword2',
-        'HOST': 'kukshabird.mysql.pythonanywhere-services.com',
-        #'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 
