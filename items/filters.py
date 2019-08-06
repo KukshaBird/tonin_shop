@@ -1,7 +1,5 @@
 import django_filters
 from .models import Product
-from django_filters.conf import DEFAULTS
-from django_filters.widgets import RangeWidget, SuffixedMultiWidget
 
 
 
