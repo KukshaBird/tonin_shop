@@ -1,10 +1,19 @@
 {% extends 'basic.html' %}
 {% load static %}
+{% load bootstrap %}
 
 {% block main_block %}
+
+<div class='container'>
+  <form method="GET">
+    {{ filter.form|bootstrap }}
+    <button type="submit" class="btn btn-primary">Поиск</button>
+  </form>
+</div>
+
 <div class="product_list">
   <ul class="product-list-content">
-  {% for product in product_list %}
+  {% for product in filter.qs %}
       <li class="product border border-secondary rounded">
         <div class="product-box">
           <a href="{% url 'items:product_details' pk=product.pk %}"><h4>{{ product.name|truncatewords:4 }}</h4></a>
