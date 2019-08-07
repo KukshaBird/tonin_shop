@@ -1,10 +1,11 @@
-{% extends 'basic.html' %}
+{% extends 'products.html' %}
 {% load static %}
+{% load bootstrap %}
 
-{% block main_block %}
+{% block product_block %}
 <div class="product_list">
   <ul class="product-list-content">
-  {% for product in towel_list %}
+  {% for product in filter.qs %}
       <li class="product border border-secondary rounded">
         <div class="product-box">
           <a href="{% url 'items:towel_details' pk=product.pk %}"><h4>{{ product.name|truncatewords:4 }}</h4></a>
