@@ -1,16 +1,8 @@
-{% extends 'basic.html' %}
+{% extends 'products.html' %}
 {% load static %}
 {% load bootstrap %}
 
-{% block main_block %}
-
-<div class='container'>
-  <form method="GET">
-    {{ filter.form|bootstrap }}
-    <button type="submit" class="btn btn-primary">Поиск</button>
-  </form>
-</div>
-
+{% block product_block %}
 <div class="product_list">
   <ul class="product-list-content">
   {% for product in filter.qs %}

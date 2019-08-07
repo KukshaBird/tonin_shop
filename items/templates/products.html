@@ -1,0 +1,12 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block main_block %}
+<div class="filters">
+  {% include 'filters.html' %}
+</div>
+
+{% block product_block %}{% endblock %}
+
+{% endblock %}
