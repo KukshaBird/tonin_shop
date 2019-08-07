@@ -85,8 +85,8 @@ DATABASES = {
          #       'read_default_file': os.path.join(BASE_DIR, 'tonin_shop/mySQL.cnf')
          #   },
         'NAME': 'kukshabird$shop_items',
-        'USER': "kukshabird",
-        'PASSWORD': 'adminpassword2',
+        'USER': "",
+        'PASSWORD': '',
         'HOST': 'kukshabird.mysql.pythonanywhere-services.com',
         #'PORT': '5432'
     }
