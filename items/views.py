@@ -4,21 +4,24 @@ from items.models import Product,Towel
 #from tonin_shop.views import Index
 from .filters import ProductFilter,TowelFilter
 from django.core.paginator import Paginator
-from .forms import ProductFilterForm
 
 
 class ProductListView(ListView):
     model = Product
     template_name = 'products_list.html'
-    context_object_name = 'product_list'
-    paginate_by = 6
+    # queryset = Product.objects.all().order_by('-name')
+    # paginate_by = 6
+
 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filter'] = ProductFilter(self.request.GET, queryset=self.get_queryset())
-        context['form'] = ProductFilterForm
-        Paginator(context['filter'], self.paginate_by)
+        context['filter'] = ProductFilter(self.request.GET)
+        paginator = Paginator(context['filter'].qs.all().order_by('name'), 6)
+        page = self.request.GET.get('page')
+        context['paginator'] = paginator.get_page(page)
+        if paginator.count > 6:
+            context['is_paginated'] = True
 
         return context
 
