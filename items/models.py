@@ -3,17 +3,46 @@ from django.db import models
 
 # Create your models here.
 class Product(models.Model):
-    name = models.CharField(max_length=55,verbose_name='Наименование',unique=False,null=True)
-    article = models.CharField(max_length=30,verbose_name='Артикул',unique=True,null=True, editable=False)
-    image = models.ImageField(upload_to='items/static/products_imgs',blank=True,null=True)
+    name = models.CharField(max_length=55,
+                            verbose_name='Наименование',
+                            unique=False,
+                            null=True)
+    article = models.CharField(max_length=30,
+                            verbose_name='Артикул',
+                            unique=True,
+                            null=True,
+                            editable=False)
+    image = models.ImageField(upload_to='items/static/products_imgs',
+                            blank=True,
+                            null=True)
     price = models.PositiveSmallIntegerField(verbose_name='Цена')
-    type = models.ForeignKey('ProductType',on_delete=models.CASCADE,verbose_name='Размер',null=True)
-    fabric = models.CharField(max_length=55,verbose_name='Материал',blank=True,null=True)
-    available = models.BooleanField(verbose_name='Наличие',default=True)
-    description = models.TextField(verbose_name='Описание',blank=True)
-    duvet_cover = models.ForeignKey('DuvetCover',on_delete=models.SET_NULL,verbose_name='Пододеяльник',null=True,blank=True)
-    sheet = models.ForeignKey('Sheet',on_delete=models.SET_NULL,verbose_name='Простынь',null=True,blank=True)
-    pillowcase = models.ForeignKey('Pillowcase',on_delete=models.SET_NULL,verbose_name='Подушка',null=True,blank=True)
+    type = models.ForeignKey('ProductType',
+                            on_delete=models.CASCADE,
+                            verbose_name='Размер',
+                            null=True)
+    fabric = models.CharField(max_length=55,
+                            verbose_name='Материал',
+                            blank=True,
+                            null=True)
+    available = models.BooleanField(verbose_name='Наличие',
+                                    default=True)
+    description = models.TextField(verbose_name='Описание',
+                                    blank=True)
+    duvet_cover = models.ForeignKey('DuvetCover',
+                            on_delete=models.SET_NULL,
+                            verbose_name='Пододеяльник',
+                            null=True,
+                            blank=True)
+    sheet = models.ForeignKey('Sheet',
+                            on_delete=models.SET_NULL,
+                            verbose_name='Простынь',
+                            null=True,
+                            blank=True)
+    pillowcase = models.ForeignKey('Pillowcase',
+                            on_delete=models.SET_NULL,
+                            verbose_name='Подушка',
+                            null=True,
+                            blank=True)
     create_date = models.DateTimeField(auto_now=True,null=True)
 
 
@@ -87,12 +116,27 @@ class Pillowcase(Complectation):
 
 #TOWELS
 class Towel(models.Model):
-    name = models.CharField(max_length=55,verbose_name='Наименование',unique=False,null=True)
-    size = models.CharField(max_length=55,verbose_name='Размер',null=True,blank=True)
-    article = models.CharField(max_length=30,verbose_name='Артикул',unique=True,null=True, editable=False)
-    image = models.ImageField(upload_to='items/static/products_imgs',blank=True,null=True)
+    name = models.CharField(max_length=55,
+                            verbose_name='Наименование',
+                            unique=False,
+                            null=True)
+    size = models.CharField(max_length=55,
+                            verbose_name='Размер',
+                            null=True,
+                            blank=True)
+    article = models.CharField(max_length=30,
+                            verbose_name='Артикул',
+                            unique=True,
+                            null=True,
+                            editable=False)
+    image = models.ImageField(upload_to='items/static/products_imgs',
+                            blank=True,
+                            null=True)
     price = models.PositiveSmallIntegerField(verbose_name='Цена')
-    fabric = models.CharField(max_length=55,verbose_name='Материал',blank=True,null=True)
+    fabric = models.CharField(max_length=55,
+                            verbose_name='Материал',
+                            blank=True,
+                            null=True)
     available = models.BooleanField(verbose_name='Наличие',default=True)
     description = models.TextField(verbose_name='Описание',blank=True)
     create_date = models.DateTimeField(auto_now=True,null=True)

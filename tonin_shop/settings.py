@@ -26,7 +26,7 @@ SECRET_KEY = '$ho)*w!x-rg-yw)xh-p@zk*w(d1$o1rjtqah0!o-#v8_+#&fu3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kukshabird.pythonanywhere.com']
+# ALLOWED_HOSTS = ['kukshabird.pythonanywhere.com']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'items',
     'info',
     'django_filters',
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'tonin_shop.urls'
@@ -139,12 +141,21 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),BASE_DIR]
 
 #Change VERBOSE_LOOKUPS in FILTERS
+from django_filters.conf import DEFAULTS
+
+DEFAULTS['DISABLE_HELP_TEXT'] = True
+
 def FILTERS_VERBOSE_LOOKUPS():
-    from django_filters.conf import DEFAULTS
     verbose_lookups = DEFAULTS['VERBOSE_LOOKUPS'].copy()
     verbose_lookups.update({
             'icontains': 'содержит',
             'lt': 'меньше чем',
-            'gt': 'больше чем'
+            'gt': 'больше чем',
+            'range': ('между'),
         })
     return verbose_lookups
+
+
+# DEBUGTOOLBAR
+
+INTERNAL_IPS = ['127.0.0.1']

@@ -10,7 +10,7 @@ class ProductListView(ListView):
     model = Product
     template_name = 'products_list.html'
     # queryset = Product.objects.all().order_by('-name')
-    # paginate_by = 6
+    paginate_by = 6
 
 
 
