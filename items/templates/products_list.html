@@ -1,6 +1,7 @@
 {% extends 'products.html' %}
 {% load static %}
 {% load bootstrap %}
+{% load my_tags %}
 
 {% block product_block %}
 <div class="product_list">
@@ -40,35 +41,10 @@
 {% if is_paginated %}
 <nav>
   <ul class="pagination">
-    <!-- {% if paginator.has_previous %}
-    <li>
-      <a href="?page={{ paginator.previous_page_number }}">&laquo;</a>
-    </li>
-    {% else %}
-    <li class="disabled"><a href="?page=1">&laquo;</a></li>       
-    {% endif %}
-    {% for i in paginator.count %}
-      {% if i == paginator.number %}
-      <li class="active">
-      <a href="?page={{ paginator.number }}">{{ paginator.number }}</a>
-      </li>
-      {% endif %}
-      <li><a href="?page={{i}}" ></a></li>
-    {% endfor %}
+    <li><a href="?{% param_replace page=page_obj.next_page_number %}">&raquo;</a></li>
     <span class="current">
         Page {{ paginator.number }} of {{ paginator.paginator.num_pages }}.
     </span>
-
-    {% if paginator.has_next %}
-    <li><a href="?page={{ paginator.next_page_number }}">&raquo;</a></li>
-    {% else %}
-    <li class="disabled"><a href="?page={{ paginator.next_page_number }}">&raquo;</a></li>
-    {% endif %} -->
-    <li><a href="?page={{ paginator.next_page_number }}">&raquo;</a></li>
-    <span class="current">
-        Page {{ paginator.number }} of {{ paginator.paginator.num_pages }}.
-    </span>
-
   </ul>
 </nav>
 {% endif %}
