@@ -41,7 +41,7 @@
 {% if is_paginated %}
 <nav class="nav-pagination">
   <!-- FIRST -->
-  <ul class="pagination">
+  <ul class="pagination justify-content-center">
     {% if paginator.has_previous %}
     <li class="page-item">
       <a class="page-link" href="?{% param_replace page=paginator.previous_page_number %}" aria-label="Previous">
