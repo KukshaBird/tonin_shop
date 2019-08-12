@@ -206,18 +206,9 @@ body {
   text-align: center;
 }
 
-.pagination {
-  width: 70%;
-  font-size: 40px;
-  float: none;
-  text-align: center;
-  padding-left: 45%;
+.nav-pagination {
+  float: left;
 }
-
-.pagination li a {
-  padding-right: 5px;
-}
-
 
 
 /* FOOTER */
